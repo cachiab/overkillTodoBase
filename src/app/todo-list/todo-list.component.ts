@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Todo} from '../models/todo';
 import {Store} from '@ngrx/store';
 import {selectTodos} from '../store/selectors';
-import {loadTodos} from '../store/actions';
+import {loadTodos, toggleBoxTodos, sortTodos} from '../store/actions';
 
 @Component({
   selector: 'app-todo-list',
@@ -20,6 +20,14 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
      this.store.dispatch(loadTodos());
+  }
+
+  toggleBox(id: number, todo: Todo): void{
+    console.log("toggleBox()")
+    this.store.dispatch(toggleBoxTodos({id,todo}));
+  }
+
+  ngOnChange(): any {
   }
 
 }

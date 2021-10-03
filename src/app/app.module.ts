@@ -21,10 +21,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {MockTodoApi} from './services/mock-todo-api';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
+import { DetailComponent } from './detail/detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent
+    TodoListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
     MatCheckboxModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(MockTodoApi),
+    HttpClientInMemoryWebApiModule.forRoot(MockTodoApi, { dataEncapsulation: false }),
     StoreModule.forRoot({todosStore: todosReducer}),
     EffectsModule.forRoot([Effects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })

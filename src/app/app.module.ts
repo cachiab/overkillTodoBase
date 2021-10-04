@@ -22,6 +22,9 @@ import {MockTodoApi} from './services/mock-todo-api';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 import { DetailComponent } from './detail/detail.component';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './routes';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { DetailComponent } from './detail/detail.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
@@ -43,7 +47,8 @@ import { DetailComponent } from './detail/detail.component';
     HttpClientInMemoryWebApiModule.forRoot(MockTodoApi, { dataEncapsulation: false }),
     StoreModule.forRoot({todosStore: todosReducer}),
     EffectsModule.forRoot([Effects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]

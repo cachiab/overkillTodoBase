@@ -9,14 +9,14 @@
               [checked]="todo.isClosed"
               (click)="toggleBox(todo.id,todo)"
             ></mat-checkbox>
-            {{ todo.title }}
+            <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
           </h4>
           <h4 matLine *ngSwitchCase=true style="text-decoration: line-through;">
             <mat-checkbox
               [checked]="todo.isClosed"
               (click)="toggleBox(todo.id,todo)"
             ></mat-checkbox>
-            {{ todo.title }}
+            <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
           </h4>
         </mat-list-item>
       </mat-list>

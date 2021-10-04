@@ -1,18 +1,17 @@
 import {Todo} from '../models/todo';
 import {createReducer, on} from '@ngrx/store';
-import {loadTodosSuccess, toggleBoxTodosSuccess} from './actions';
+import {getOneAction, loadTodosSuccess, toggleBoxTodosAction} from './actions';
 
 export const featureKey = 'todosStore';
 
-export const featuredCheckBoxKey = 'checkBox';
-
 export interface State {
   todos: ReadonlyArray<Todo>;
+  todo: Todo;
 }
-
 
 export const initialState: State = {
   todos: [],
+  todo: {id: -1, title: '', isClosed: false},
 };
 
 export const todosReducer = createReducer(
@@ -25,18 +24,24 @@ export const todosReducer = createReducer(
     })
   ),
 
-    on(toggleBoxTodosSuccess,
-      // Ugly code which works without entity...
-      (state, {id}) => ({
-        ...state, 
-        todos: state.todos.map(value => {
-        if(value.id === id){
-          return {...value,id: id, title: value.title, isClosed: !value.isClosed}
-          } else {
-            return value;
-          }
-        })
-      })    
-    )
+  on(toggleBoxTodosAction,
+    // Ugly code which works without entity...
+    (state, {id}) => ({
+      ...state, 
+      todos: state.todos.map(value => {
+      if(value.id === id){
+        return {...value,id: id, title: value.title, isClosed: !value.isClosed}
+        } else {
+          return value;
+        }
+      })
+    })    
+  ),
+  on(
+    getOneAction,
+    (state,{ todo }) => ({
+      ...state, todo
+    })
+  )
 );
 

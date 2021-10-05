@@ -7,8 +7,8 @@ export const getState = createFeatureSelector<State>(featureKey);
 export const selectTodos = createSelector(
   getState,
   (state: State) => {
-    const resultTrue = state.todos.filter((todo: Todo) => todo.isClosed === false)
-    const resultFalse = state.todos.filter((todo: Todo) => todo.isClosed === true);
+    const resultTrue = state.todos.filter((todo: Todo) => todo.isClosed === false);
+    const resultFalse = state.todos.filter((todo: Todo) => todo.isClosed === true).sort((a,b) => a.creationDate - b.creationDate);
     return resultTrue.concat(resultFalse)
   });
 
@@ -19,4 +19,9 @@ export const toggleTodo = createSelector(
 
 export const getOneSelector = createSelector(
   getState,
-  (state: State) => state.todo); //Test recup le premier
+  (state: State) => state.todo);
+
+export const addOneTodo = createSelector(
+  getState,
+  (state: State) => state.todo
+)

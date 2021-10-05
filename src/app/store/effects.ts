@@ -18,19 +18,6 @@ export class Effects {
     )
   );
 
-  /*toggleTodos$ = createEffect (() =>
-    this.actions$.pipe(
-      ofType(toggleBoxTodos),
-      mergeMap(action =>
-        this.todoService.toggle(action.todo.id, action.todo).pipe(
-          map(() => toggleBoxTodosSuccess({id:action.id, todo:action.todo}),
-          catchError(() => [toggleBoxTodosFailed()])
-          )
-        )    
-      ) 
-    )
-  );*/
-
   constructor(private actions$: Actions, private todoService: TodoService) {}
 }
 

@@ -1,7 +1,10 @@
 <div>
-<h1>Detail of the todo</h1>
+    <mat-toolbar class="detailMenu" color="white">
+        <h1>Detail of the todo</h1>
+    </mat-toolbar>
 <ul>
     <li>todo's id: {{(todo$ | async)?.id}}</li>
     <li>todo's title: {{(todo$ | async)?.title}}</li>
+    <li>todo's description: {{(todo$ | async)?.description}}</li>
 </ul>
 </div>

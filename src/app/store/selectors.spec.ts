@@ -4,9 +4,13 @@ import {selectTodos, toggleTodo} from './selectors';
 describe('Selectors', () => {
   const initialState: State = {
    todos: [
-     {id: 1, title: 'todo1Title', isClosed: true},
-     {id: 2, title: 'todo2Title', isClosed: false},
-   ]
+     {creationDate: new Date().getTime(), description:"desc1", id: 1, title: 'todo1Title', isClosed: true},
+     {creationDate: new Date().getTime(), description:"desc2", id: 2, title: 'todo2Title', isClosed: false},
+   ],
+   todo: {creationDate: -1, id: -1, title: '',description:'', isClosed: false},
+   title: '',
+   creationDate: -1
+
   };
 
   it('should select todos list', () => {

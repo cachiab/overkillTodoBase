@@ -15,22 +15,4 @@ export class TodoService {
     return this.http.get<Todo[]>(`${environment.baseUrl}/api/todos`);
   }
   constructor(private http: HttpClient) { }
-
-  toggle(id: number, todo: Todo): Observable<Todo> {
-    console.log("toggle todo:" + todo.id);
-    console.log(JSON.stringify(todo));
-    const option = {id: id, title: todo.title, isClosed: todo.isClosed};
-    return this.http.put<Todo>(`${environment.baseUrl}/api/todos/${id}`, option).pipe(catchError(this.handleError));
-  }
-
-  storeOne(todo: Todo): Observable<Todo> {
-    console.log("selectOne todo:" + todo.id);
-    const option = {id: todo.id, title: todo.title, isClosed: todo.isClosed};
-    return this.http.post<Todo>(`${environment.baseUrl}/api/todos/${todo.id}`, option).pipe(catchError(this.handleError));
-  }
-
-  private handleError (error: any) {
-    console.error(error);
-    return throwError(error);
-  }
 }

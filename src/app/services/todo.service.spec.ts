@@ -24,7 +24,7 @@ describe('TodoService', () => {
   });
 
   it('should list todos', (done: DoneFn) => {
-    const mockedTodoList: Todo[] = [{id:1, title: 'todoTitle', isClosed: true }];
+    const mockedTodoList: Todo[] = [{id:1,description:'desc1', title: 'todoTitle', isClosed: true, creationDate: new Date().getTime()}];
 
     service
       .list()

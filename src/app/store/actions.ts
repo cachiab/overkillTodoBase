@@ -11,10 +11,10 @@ export const loadTodosSuccess = createAction(
 export const loadTodosFailed = createAction('[Todos] Load todos failed');
 
 // Close the box when action happens...
-export const toggleBoxTodosAction = createAction('[CheckBox] Toggle box', props<{ id: number, todo: Todo}>());
+export const toggleBoxTodosAction = createAction('[CheckBox] Toggle box', props<{ todo: Todo}>());
 
 // Store the todo to retrieve in detail
-export const storeOneAction = createAction('[Detail] Store on todo', props<{ todoTitle: string, todoDesc: string}>());
+export const storeOneAction = createAction('[Detail] Store on todo', props<{ todo: Todo }>());
 
 // Get the todo for details...
 export const getOneAction = createAction('[Detail] Get one todo', props<{todo: Todo}>());

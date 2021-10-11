@@ -1,7 +1,6 @@
 import {Todo} from '../models/todo';
 import {createReducer, on} from '@ngrx/store';
 import {getOneAction, loadTodosSuccess, storeOneAction, toggleBoxTodosAction} from './actions';
-import { TodoListComponent } from '../todo-list/todo-list.component';
 
 export const featureKey = 'todosStore';
 
@@ -30,11 +29,11 @@ export const todosReducer = createReducer(
   ),
 
   on(toggleBoxTodosAction,
-    (state, {id}) => ({
+    (state, {todo}) => ({
       ...state, 
       todos: state.todos.map(value => {
-      if(value.id === id){
-        return {...value,creationDate: new Date().getTime(), id: id, title: value.title, description: value.description, isClosed: !value.isClosed}
+      if(value.id === todo.id){
+        return {...value,id: value.id, title: value.title, description: value.description, isClosed: !todo.isClosed, creationDate: todo.creationDate}
         } else {
           return value;
         }
@@ -49,12 +48,11 @@ export const todosReducer = createReducer(
   ),
   on(
     storeOneAction,
-    (state, {todoTitle,todoDesc}) => (
+    (state, {todo}) => (
       {
       ...state,
-      todos: [{creationDate: new Date().getTime(), id: Math.floor(Math.random()*100), title: todoTitle, description: todoDesc, isClosed: false},...state.todos
-      ]
-    }
+      todos: [todo, ...state.todos]
+      }
     )
   )
 );

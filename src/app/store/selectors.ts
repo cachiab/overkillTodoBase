@@ -19,9 +19,5 @@ export const toggleTodo = createSelector(
 
 export const getOneSelector = createSelector(
   getState,
-  (state: State) => state.todo);
-
-export const addOneTodo = createSelector(
-  getState,
-  (state: State) => state.todo
-)
+  (state: State) => state.todo,
+);

@@ -5,18 +5,22 @@
       <mat-card-content>
         <mat-list>
           <mat-list-item *ngFor="let todo of todos$ | async " [ngSwitch]="todo.isClosed">
-            <h4 matLine *ngSwitchCase=false>
-              <mat-checkbox color='primary'
-                [checked]="todo.isClosed"
-                (click)="toggleBox(todo.id,todo)"
-              ></mat-checkbox>
-            <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
+            <h4 id='todoItem1' matLine *ngSwitchCase=false>
+              <div id='checkbox'>
+                <mat-checkbox color='primary'
+                  [checked]="todo.isClosed"
+                  (click)="toggleBox(todo)"
+                ></mat-checkbox>
+              </div>
+              <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
             </h4>
-            <h4 matLine *ngSwitchCase=true style="text-decoration: line-through;">
-              <mat-checkbox color='primary'
-                [checked]="todo.isClosed"
-                (click)="toggleBox(todo.id,todo)"
-              ></mat-checkbox>
+            <h4 id='todoItem2' matLine *ngSwitchCase=true style="text-decoration: line-through;">
+              <div id='checkbox'>
+                <mat-checkbox color='primary'
+                  [checked]="todo.isClosed"
+                  (change)="toggleBox(todo)"
+                ></mat-checkbox>
+              </div>
               <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
             </h4>
           </mat-list-item>
@@ -27,19 +31,23 @@
   <div id="addtodocontainer" class="row">
   <mat-card>
     <mat-card-title>Add new todo</mat-card-title>
-    <form (ngSubmit)="onSubmit()"> 
-        <mat-form-field class="form-control" appearance="fill">
-          <mat-label for="newTitle" id="newTitle-label">Todo's title: </mat-label>
-          <input matInput id="newTitle" class="form-control" [formControl]="todoTitleToAddCtrl$" [errorStateMatcher]="matcher"/>
-        </mat-form-field>
-        <mat-error *ngIf="todoTitleToAddCtrl$.dirty && todoTitleToAddCtrl$.hasError('required') || (todoTitleToAddCtrl$.touched && todoTitleToAddCtrl$.hasError('required'))">todo's title is <strong>required</strong>
-        </mat-error>
-        <mat-form-field class="form-control" appearance="fill">
-          <mat-label for="newDescription" id="newDescription-label">Todo's description: </mat-label>
-          <input matInput id="newDescription" class="form-control" [formControl]="todoDescToAddCtrl$" [errorStateMatcher]="matcher"/>
-        </mat-form-field>
-
-      <button mat-raised-button color="primary" class="btn btn-primary" type="submit" [disabled]="newTitleForm.invalid">Add to todo list!</button>
+    <form (ngSubmit)="addOneTodo(this.todoTitleToAddCtrl$.value, this.todoDescToAddCtrl$.value)"> 
+        <div>
+          <mat-form-field class="form-control" appearance="fill">
+            <mat-label for="newTitle" id="newTitle-label">Todo's title: </mat-label>
+            <mat-error *ngIf="todoTitleToAddCtrl$.dirty && todoTitleToAddCtrl$.hasError('required') || (todoTitleToAddCtrl$.touched && todoTitleToAddCtrl$.hasError('required'))">todo's title is <strong>required</strong>
+            </mat-error>
+            <input matInput id="newTitle" class="form-control" [formControl]="todoTitleToAddCtrl$" />
+          </mat-form-field>
+        </div>
+        <br>
+        <div>
+          <mat-form-field class="form-control" appearance="fill">
+            <mat-label for="newDescription" id="newDescription-label">Todo's description: </mat-label>
+            <input matInput id="newDescription" class="form-control" [formControl]="todoDescToAddCtrl$" />
+          </mat-form-field>
+        </div>
+      <button mat-raised-button color="primary" class="btn btn-primary" type="submit" [disabled]="newTodoForm.invalid">Add to todo list!</button>
     </form>
   </mat-card>
   </div>

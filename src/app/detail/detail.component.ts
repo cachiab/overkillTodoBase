@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 export class DetailComponent implements OnInit {
   todo$?: Observable<Todo>;
   constructor(private store: Store) { 
-   
   }
 
   ngOnInit(): void {

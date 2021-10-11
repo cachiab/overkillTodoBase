@@ -27,6 +27,7 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './routes';
 import { CommonModule } from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
-
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
     //Style modules
     MatGridListModule,
     MatButtonModule,

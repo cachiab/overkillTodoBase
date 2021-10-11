@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MockedComponent} from 'ng-mocks';
 import { By } from '@angular/platform-browser';
 import { Todo } from '../models/todo';
-import { getOneAction } from '../store/actions';
+import { getTodoDetailAction } from '../store/actions';
 import { DetailComponent } from '../detail/detail.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -146,7 +146,7 @@ describe('TodoListComponent', () => {
     fixture.detectChanges();
     expect(spy).toHaveBeenCalledTimes(1);
     expect(component.getOneTodoForDetails).toHaveBeenCalled;
-    expect(spy).toHaveBeenCalledWith(getOneAction({todo: { id: 1, title: 'todo 1', description: 'desc1', isClosed: false, creationDate: 0 }}));
+    expect(spy).toHaveBeenCalledWith(getTodoDetailAction({todo: { id: 1, title: 'todo 1', description: 'desc1', isClosed: false, creationDate: 0 }}));
 
   });
   

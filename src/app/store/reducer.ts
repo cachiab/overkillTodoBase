@@ -1,6 +1,6 @@
 import {Todo} from '../models/todo';
 import {createReducer, on} from '@ngrx/store';
-import {getOneAction, loadTodosSuccess, storeOneAction, toggleBoxTodosAction} from './actions';
+import {getTodoDetailAction, loadTodosSuccess, storeOneAction, toggleBoxTodosAction} from './actions';
 
 export const featureKey = 'todosStore';
 
@@ -41,7 +41,7 @@ export const todosReducer = createReducer(
     })   
   ),
   on(
-    getOneAction,
+    getTodoDetailAction,
     ( state,{ todo }) => ({
       ...state, todo
     })

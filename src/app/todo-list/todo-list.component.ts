@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Todo} from '../models/todo';
 import {Store} from '@ngrx/store';
-import {loadTodos, getOneAction, toggleBoxTodosAction, storeOneAction} from '../store/actions';
+import {loadTodos, getTodoDetailAction, toggleBoxTodosAction, storeOneAction} from '../store/actions';
 import { selectTodos } from '../store/selectors';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
@@ -39,7 +39,7 @@ export class TodoListComponent implements OnInit {
   }
   
   getOneTodoForDetails(todo: Todo): void {
-    this.store.dispatch(getOneAction({todo}));
+    this.store.dispatch(getTodoDetailAction({todo}));
   }
 
   addOneTodo(newTitle: string, newDescription: string): void{

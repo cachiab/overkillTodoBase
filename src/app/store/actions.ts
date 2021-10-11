@@ -17,4 +17,4 @@ export const toggleBoxTodosAction = createAction('[CheckBox] Toggle box', props<
 export const storeOneAction = createAction('[Detail] Store on todo', props<{ todo: Todo }>());
 
 // Get the todo for details...
-export const getOneAction = createAction('[Detail] Get one todo', props<{todo: Todo}>());
+export const getTodoDetailAction = createAction('[Detail] Get one todo', props<{todo: Todo}>());

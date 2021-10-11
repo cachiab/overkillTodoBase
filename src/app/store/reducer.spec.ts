@@ -1,6 +1,6 @@
 import * as fromReducer from './reducer';
 import { State } from './reducer';
-import { getOneAction, loadTodosSuccess, storeOneAction, toggleBoxTodosAction } from './actions';
+import { getTodoDetailAction, loadTodosSuccess, storeOneAction, toggleBoxTodosAction } from './actions';
 import { Todo } from '../models/todo';
 
 describe('Reducer', () => {
@@ -92,7 +92,7 @@ describe('Reducer', () => {
         creationDate: 0 
       };
 
-      const action = getOneAction({todo: todoTest});
+      const action = getTodoDetailAction({todo: todoTest});
       const state = fromReducer.todosReducer(initialState, action);
 
       expect(state.todo).toEqual(newState.todo);

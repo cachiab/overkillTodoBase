@@ -1,11 +1,9 @@
 import { Todo } from '../models/todo';
-import { getOneAction, toggleBoxTodosAction } from './actions';
+import { toggleBoxTodosAction } from './actions';
 import {State} from './reducer';
 import {getOneSelector, selectTodos, toggleTodo} from './selectors';
-import { MockStore } from '@ngrx/store/testing';
 
 describe('Selectors', () => {
-  let store: MockStore<State>;
   const initialState: State = {
    todos: [
      { id: 0, title: 'todo1Title', description:"desc1", isClosed: false, creationDate: 0},
@@ -41,13 +39,11 @@ describe('Selectors', () => {
   it('toggle should return the list of todos', () => {
     const action = toggleBoxTodosAction({todo: initialState.todos[1]})
     const result = toggleTodo.projector(initialState,action);
-    expect(result).toEqual(initialState.todos);
+    expect(result).toEqual(initialState.todos); 
   });
 
-  it('should select one todo from the todoList'), () => {
-    const action = getOneAction({todo: initialState.todos[3]});
-    const result = getOneSelector.projector(initialState.todo,action);
-    expect(result).not.toEqual(initialState.todo);
-    expect(result).toEqual({ id: 3, title: 'todo4Title', description:"desc4",  isClosed: true,creationDate: 3000});
-  }
+  it('should select one todo from the todoList', () => {
+    const result = getOneSelector.projector(initialState);
+    expect(result).toEqual(initialState.todo);
+  });
 });

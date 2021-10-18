@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../models/todo';
 import { Store } from '@ngrx/store';
-import { getOneSelector} from '../store/selectors';
+import { getOneSelector } from '../store/selectors';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',

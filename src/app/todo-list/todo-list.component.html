@@ -4,7 +4,7 @@
       <mat-card-title>Todos</mat-card-title>
       <mat-card-content>
         <mat-list>
-          <mat-list-item *ngFor="let todo of todos$ | async " [ngSwitch]="todo.isClosed">
+          <mat-list-item *ngFor="let todo of todos$ | async" [ngSwitch]="todo.isClosed">
             <h4 id='todoItem1' matLine *ngSwitchCase=false>
               <div id='checkbox'>
                 <mat-checkbox color='primary'
@@ -12,7 +12,7 @@
                   (click)="toggleBox(todo)"
                 ></mat-checkbox>
               </div>
-              <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
+              <a class = 'nav-link' routerLinkActivation ="active" routerLink="/todo/{{todo.id}}" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
             </h4>
             <h4 id='todoItem2' matLine *ngSwitchCase=true style="text-decoration: line-through;">
               <div id='checkbox'>
@@ -21,7 +21,7 @@
                   (change)="toggleBox(todo)"
                 ></mat-checkbox>
               </div>
-              <a class = 'nav-link' routerLinkActivation ="active" routerLink="/detail" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
+              <a class = 'nav-link' routerLinkActivation ="active" routerLink="/todo/{{todo.id}}" (click)=getOneTodoForDetails(todo)>{{ todo.title }}</a>
             </h4>
           </mat-list-item>
         </mat-list>

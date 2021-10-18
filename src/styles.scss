@@ -1,13 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
-
 html,
 body {
   height: 100%;
 }
 body {
+  background: white;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.theme-light {
+  background-color: #fff;
+  color: #333;
+}
+
+.mat-slide-toggle{
+  color: 'warn';
+}
+
+.theme-dark {
+  background-color: #333;
+  color: #fff;
+  .mat-card, .mat-card-content, .mat-list, .mat-list-text {
+    background-color: rgb(136, 132, 132);
+    color: #fff;
+    text-decoration-color: white;
+  }
+  .mat-toolbar {
+    background-color: black;
+    color: white;
+  }
+  .mat-list-text > a {
+    color: #fff;
+  }
+
+  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: rgb(228, 224, 224);
+  }
+
+  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: rgb(97, 93, 93);
+  }
+
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-ripple .mat-ripple-element {
+    background-color: rgb(255, 255, 255);
+  }
+ 
+  #todoItem1 a.nav-link,#todoItem2 a.nav-link {
+    color: rgb(228, 222, 222);
+    cursor: pointer;
+  }
+
+  #todoItem1 a.nav-link:hover,#todoItem2 a.nav-link:hover {
+    cursor: pointer;
+    color: rgb(235, 186, 51);
+  }
+
+ 
+  #todoItem1 a.nav-link:hover,#todoItem2 a.nav-link:visited {
+    color: rgb(235, 186, 51);
+    cursor: pointer;
+  }
+  
+  .mat-checkbox-checked.mat-primary .mat-checkbox-background, .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {
+    background: rgb(255, 81, 0)!important;
+  }
+
+  .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: rgb(255, 81, 0) !important;
+   }
+
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: rgb(255, 81, 0) !important;
+  }
+
+  .mat-raised-button {
+    color: rgb(228, 222, 222);
+    background-color: rgb(255, 81, 0);
+  }
+}

@@ -1,6 +1,15 @@
 <mat-toolbar color="primary">
   <a [routerLink]="['/']">Overkill Todo App</a>
   <span class="fill-remaining-space"></span>
+  <span class='toggleButtonContainer'>
+    <div class="flex-stretch"></div>
+    <mat-icon class="mr-8">brightness_5</mat-icon>
+    <span>
+      <mat-slide-toggle (change)="onDarkModeSwitched(toggleNightMode)" class="mr-8">
+      </mat-slide-toggle>
+    </span>
+    <mat-icon>bedtime</mat-icon>
+  </span>
   <span>
     <mat-icon>assignment_turned_in</mat-icon>
   </span>

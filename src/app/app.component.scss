@@ -2,7 +2,38 @@
   flex: 1 1 auto;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.mat-icon{
+  padding-left: 10px;
+}
+
+.flex-stretch {
+ display: inline-flex;
+}
+
+.toggleButtonContainer {
+  margin-bottom: 4px;
+}
+
+span:nth-child(3) > span {
+  padding-left: 10px;
+  vertical-align: text-bottom;
+
+}
+
+.mat-button-toggle.selectable button span {
+  display: flex;
+  align-items: center
+}
+
+span:nth-child(3) {
+  display: center;
+  height: auto;
+}
+
+.mat-button-toggle-group.mat-button-toggle-group {
+  display: flex;
+
+  .mat-button-toggle:nth-child(2) {
+    margin-left: auto;
+  }
 }

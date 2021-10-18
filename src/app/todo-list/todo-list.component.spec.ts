@@ -33,7 +33,7 @@ describe('TodoListComponent', () => {
       declarations: [
         TodoListComponent, DetailComponent
       ],
-      imports: [BrowserAnimationsModule,MatFormFieldModule, MatInputModule,MatRippleModule, FormsModule,ReactiveFormsModule,MatCardModule,MatListModule,MatCheckboxModule],
+      imports: [BrowserAnimationsModule,MatFormFieldModule,MatInputModule,MatRippleModule,FormsModule,ReactiveFormsModule,MatCardModule,MatListModule,MatCheckboxModule],
       providers: [provideMockStore({
         selectors: [{selector: selectTodos, value: todosList}]
       })],
@@ -66,18 +66,6 @@ describe('TodoListComponent', () => {
     expect(fixture.debugElement.query(By.css('#addtodocontainer > mat-card > mat-card-title')).nativeElement.innerText).toEqual("Add new todo")
   });
 
-  it('should display a list of 2 input in the right part container', () => {
-    fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('#addtodocontainer > mat-card > form')).nativeElement.innerText).not.toBeNull;
-    expect(fixture.debugElement.query(By.css('form > div:nth-child(1) > mat-form-field')).nativeElement.innerText).toBeNull;
-    expect(fixture.debugElement.query(By.css('form > div:nth-child(3) > mat-form-field')).nativeElement.innerText).toBeNull;
-    expect(fixture.debugElement.query(By.css('#newTitle-label')).nativeElement.innerText).toBeNull;
-    expect(fixture.debugElement.query(By.css('#newTitle')).nativeElement.innerText).toBeNull;
-    expect(fixture.debugElement.query(By.css('#newDescription-label')).nativeElement.innerText).toBeNull;
-    expect(fixture.debugElement.query(By.css('#newDescription')).nativeElement.innerText).toBeNull;
-    expect(fixture.debugElement.query(By.css('mat-label')).nativeElement.innerText).toBeNull;
-  }); 
-
   it("should display in the container 'Add new todo' an input 'Todo's title:", () => {
     expect(fixture.debugElement.query(By.css('#newTitle-label')).nativeElement.innerText).toEqual("Todo's title:")
   });
@@ -99,8 +87,7 @@ describe('TodoListComponent', () => {
     const todoElements = fixture.debugElement.queryAll(By.css('mat-list mat-list-item'));
     expect(todoElements.length).toEqual(2);
 
-    const todoCheckboxes: MockedComponent<MatCheckbox>[] =
-      todoElements.map(item => item.query(By.css('mat-checkbox'))).map(item => item.componentInstance);
+    const todoCheckboxes: MockedComponent<MatCheckbox>[] = todoElements.map(item => item.query(By.css('mat-checkbox'))).map(item => item.componentInstance);
     expect(todoCheckboxes[0].checked).toBeFalse();
     expect(todoCheckboxes[1].checked).toBeTrue();
   });
@@ -119,8 +106,7 @@ describe('TodoListComponent', () => {
 
       const addingbutton = fixture.debugElement.query(By.css('#addtodocontainer > mat-card > form > button'));
       
-      addingbutton.triggerEventHandler('click', {disabled: false,
-        ngSubmit:component.addOneTodo(todoToAdd.title,todoToAdd.description)});
+      addingbutton.triggerEventHandler('click', {disabled: false, ngSubmit:component.addOneTodo(todoToAdd.title,todoToAdd.description)});
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy).toBeTruthy;
       // TODO pb with date again and random Id...

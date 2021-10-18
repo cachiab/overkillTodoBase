@@ -28,6 +28,8 @@ import { ROUTES } from './routes';
 import { CommonModule } from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -53,13 +55,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
+    //Style modules
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    //Style modules
     MatGridListModule,
     MatButtonModule,
     MatInputModule,
+    MatDividerModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

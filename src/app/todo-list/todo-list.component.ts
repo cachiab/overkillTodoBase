@@ -5,6 +5,7 @@ import {Store} from '@ngrx/store';
 import {loadTodos, getTodoDetailAction, toggleBoxTodosAction, storeOneAction} from '../store/actions';
 import { selectTodos } from '../store/selectors';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',

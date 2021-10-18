@@ -48,12 +48,10 @@ export const todosReducer = createReducer(
   ),
   on(
     storeOneAction,
-    (state, {todo}) => (
-      {
+    (state, {todo}) => ({
       ...state,
       todos: [todo, ...state.todos]
-      }
-    )
+    })
   )
 );
 

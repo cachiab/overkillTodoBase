@@ -5,9 +5,12 @@ import { DetailComponent } from './detail/detail.component';
 
 
 export const ROUTES: Routes = [
-  { path: '', component: AppComponent },
+  { 
+    path: '',
+    component: AppComponent 
+  },
   {
-    path: 'detail',
+    path: 'todo/:id',
     component: DetailComponent,
   }
 ];
